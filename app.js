@@ -4,7 +4,7 @@ const port                          = 3001;
 const mongoose                      = require('mongoose');
 const dburi                         = process.env.MONGO_URI;
 const cookieParser                  = require('cookie-parser');
-const { requireAuth, checkUser, requireUnauth }    = require('./middleware/authMiddleware');
+const { requireAuth, checkUser }    = require('./middleware/authMiddleware');
 
 // express app
 const app           = express();
@@ -37,5 +37,5 @@ app.use((req, res, next) => {
 });
 
 app.get('*', checkUser);
-app.use('/auth', requireUnauth, authRoute);
+app.use('/auth', authRoute);
 app.use('/app', requireAuth, appRoute);
