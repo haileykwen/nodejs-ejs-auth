@@ -21,10 +21,19 @@ h1 {
 .alert {
     padding: 1rem;
     text-align: left;
+    margin-bottom: 10px;
+}
+
+.danger {
     color: #842029;
     background-color: #f8d7da;
     border: 1px solid #f5c2c7;
-    margin-bottom: 10px;
+}
+
+.success {
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
 }
 
 form {

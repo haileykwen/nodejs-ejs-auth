@@ -22,6 +22,7 @@ mongoose.connect(dburi, { useNewUrlParser: true, useUnifiedTopology: true })
 // routes
 const authRoute     = require('./routes/authRoute');
 const appRoute      = require('./routes/appRoute');
+const helpRoute     = require('./routes/helpRoute');
 
 // register view engine
 app.set('view engine', 'ejs');
@@ -38,4 +39,5 @@ app.use((req, res, next) => {
 
 app.get('*', checkUser);
 app.use('/auth', authRoute);
+app.use('/help', helpRoute);
 app.use('/app', requireAuth, appRoute);
