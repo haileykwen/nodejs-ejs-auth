@@ -23,9 +23,20 @@ formRegister.addEventListener('submit', (event) => {
     })
         .then(result => result.json())
         .then(response => {
-            resetForm();
             console.log(response);
-            window.location.href = '/auth/login';
+            if (response.status === 200) {
+                resetForm();
+                window.location.href = '/auth/login';
+            } else {
+                const existingAlert = document.getElementsByClassName('alert');
+                if (existingAlert.length > 0) existingAlert[0].remove();
+
+                var new_div = document.createElement('div');
+                new_div.className = 'alert';
+                const message = document.createTextNode(response.message);
+                new_div.appendChild(message);
+                document.body.insertBefore(new_div, formRegister);
+            }
         })
         .catch(error => console.log(error));
 });

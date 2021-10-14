@@ -32,11 +32,11 @@ const login_post = async (req, res) => {
         } else {
             res.status(400).json({ 
                 status: 400,
-                message: 'wrong email or password' 
+                message: 'Wrong email or password' 
             });
         }
     } else {
-        res.status(400).json({ message: 'email is not registered' });
+        res.status(400).json({ message: 'Email is not registered' });
     }
 }
 
@@ -49,7 +49,7 @@ const register_post = async (req, res) => {
     if (isEmailRegistered.length > 0) {
         res.status(400).json({ 
             status: 400,
-            message: 'email already registered'
+            message: 'Email already registered'
         });
     } else {
         const hash = bcrypt.hashSync(password, saltRounds);
@@ -67,7 +67,7 @@ const register_post = async (req, res) => {
             .catch((error) => {
                 res.status(500).json({
                     status: 500,
-                    message: 'server error', 
+                    message: 'Server error', 
                     error
                 });
             });
