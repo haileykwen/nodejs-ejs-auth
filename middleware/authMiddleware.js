@@ -47,6 +47,7 @@ const checkUser = (req, res, next) => {
     if (token) {
         jwt.verify(token, JWT_SECRET, async (err, decodedToken) => {
             if (err) {
+                console.log(err)
                 res.locals.user = null;
                 next();
             } else {

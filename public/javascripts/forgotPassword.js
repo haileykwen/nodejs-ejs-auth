@@ -1,19 +1,11 @@
-const formRegister = document.getElementById('form-register');
-const full_name = document.getElementById('full_name');
+const formForgot = document.getElementById('forgot-form');
 const email = document.getElementById('email');
-const password = document.getElementById('password');
 
-const resetForm = () => {
-    full_name.value = "";
-    email.value = "";
-    password.value = "";
-}
-
-formRegister.addEventListener('submit', (event) => {
+formForgot.addEventListener('submit', (event) => {
     event.preventDefault();
-    const data = { full_name: full_name.value, email: email.value, password: password.value }
+    const data = { email: email.value }
 
-    fetch('/auth/register', {
+    fetch('/help/forgot-password', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -23,7 +15,7 @@ formRegister.addEventListener('submit', (event) => {
         .then(result => result.json())
         .then(response => {
             if (response.status === 200) {
-                resetForm();
+                email.value = '';
                 const existingAlert = document.getElementsByClassName('alert');
                 if (existingAlert.length > 0) existingAlert[0].remove();
 
@@ -31,7 +23,7 @@ formRegister.addEventListener('submit', (event) => {
                 new_div.className = 'alert success';
                 const message = document.createTextNode(response.message);
                 new_div.appendChild(message);
-                document.body.insertBefore(new_div, formRegister);
+                document.body.insertBefore(new_div, formForgot);
             } else {
                 const existingAlert = document.getElementsByClassName('alert');
                 if (existingAlert.length > 0) existingAlert[0].remove();
@@ -40,7 +32,7 @@ formRegister.addEventListener('submit', (event) => {
                 new_div.className = 'alert danger';
                 const message = document.createTextNode(response.message);
                 new_div.appendChild(message);
-                document.body.insertBefore(new_div, formRegister);
+                document.body.insertBefore(new_div, formForgot);
             }
         })
         .catch(error => console.log(error));

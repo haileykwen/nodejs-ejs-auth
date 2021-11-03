@@ -20,7 +20,6 @@ formLogin.addEventListener('submit', (event) => {
     })
         .then(result => result.json())
         .then(response => {
-            console.log(response);
             if (response.status === 200) {
                 resetForm();
                 window.location.href = '/app';

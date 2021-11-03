@@ -9,7 +9,6 @@ buttonLogout.addEventListener('click', () => {
     })
         .then(result => result.json())
         .then(response => {
-            console.log(response);
             if (response.status === 200) {
                 window.location.href = '/auth/login';
             }
