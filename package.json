@@ -2,6 +2,10 @@
   "name": "nodejs-ejs-auth",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "0.10.41",
+    "npm": "1.4.29"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
