@@ -37,6 +37,7 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('*', checkUser);
 app.get('/', (req, res) => {
     res.redirect('/app');
 });
