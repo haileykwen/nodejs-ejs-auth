@@ -37,7 +37,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('*', checkUser);
+app.get('/', (req, res) => {
+    res.redirect('/app');
+});
 app.use('/auth', authRoute);
 app.use('/help', helpRoute);
 app.use('/app', requireAuth, appRoute);
