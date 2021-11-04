@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express                       = require('express');
-const port                          = 3001;
+const port                          = process.env.PORT || 3001;
 const mongoose                      = require('mongoose');
 const dburi                         = process.env.MONGO_URI;
 const cookieParser                  = require('cookie-parser');
